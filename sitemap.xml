@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    
+    <url>
+        <loc>https://nexhielektrik.com/</loc>
+        <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        
+        <!-- Image sitemap entries -->
+        <image:image>
+            <image:loc>https://nexhielektrik.com/images/nexhi-elektrik-hero.jpg</image:loc>
+            <image:title>Nexhi Elektrik - Shërbime Elektrike dhe Kamera Sigurie</image:title>
+            <image:caption>Nexhi Elektrik ofron shërbime profesionale elektrike dhe instalime kamerash sigurie në Shqipëri</image:caption>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://nexhielektrik.com/images/electrical-services.jpg</image:loc>
+            <image:title>Shërbime Elektrike Profesionale</image:title>
+            <image:caption>Instalime elektrike shtëpiake, industriale dhe komerciale</image:caption>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://nexhielektrik.com/images/security-cameras.jpg</image:loc>
+            <image:title>Sisteme Kamerash Sigurie CCTV</image:title>
+            <image:caption>Instalim dhe konfigurim kamerash sigurie për shtëpi dhe biznese</image:caption>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop</image:loc>
+            <image:title>Instalim Elektrik Profesional</image:title>
+            <image:caption>Instalim elektrik profesional në shtëpi private në Tiranë</image:caption>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop</image:loc>
+            <image:title>Kamera Sigurie CCTV</image:title>
+            <image:caption>Instalim kamerash sigurie CCTV për biznes në Durrës</image:caption>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=300&fit=crop</image:loc>
+            <image:title>Panel Elektrik</image:title>
+            <image:caption>Instalim panel elektrik për ndërtesë në Fier</image:caption>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop</image:loc>
+            <image:title>Sistem CCTV</image:title>
+            <image:caption>Sistem CCTV profesional për magazinë në Vlorë</image:caption>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&h=300&fit=crop</image:loc>
+            <image:title>Instalim Industrial</image:title>
+            <image:caption>Instalim elektrik industrial për fabrikë në Elbasan</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Additional pages can be added here when created -->
+    <url>
+        <loc>https://nexhielektrik.com/#services</loc>
+        <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://nexhielektrik.com/#about</loc>
+        <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://nexhielektrik.com/#work</loc>
+        <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://nexhielektrik.com/#faq</loc>
+        <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://nexhielektrik.com/#contact</loc>
+        <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+</urlset>
