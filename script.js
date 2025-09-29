@@ -1,13 +1,11 @@
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
-
-
     // Initialize all functionality
     initNavigation();
     initSmoothScrolling();
-    // Form validation removed
-    // Testimonial carousel removed
     initScrollAnimations();
+    initModernEffects();
+    initCardAnimations();
 });
 
 // Navigation Functionality
@@ -26,23 +24,47 @@ function initNavigation() {
         }
     });
 
+    // Set mobile menu position dynamically
+    function setMobileMenuPosition() {
+        if (navMenu && navbar) {
+            const navbarRect = navbar.getBoundingClientRect();
+            const navbarBottom = navbarRect.bottom;
+            navMenu.style.top = navbarBottom + 'px';
+        }
+    }
+    
     // Mobile menu toggle
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setMobileMenuPosition(); // Set correct position before showing
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+    
+    // Update position on scroll and resize
+    window.addEventListener('scroll', setMobileMenuPosition);
+    window.addEventListener('resize', setMobileMenuPosition);
+    
+    // Set initial position
+    setMobileMenuPosition();
 
     // Close mobile menu when clicking on nav links
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+    if (navLinks.length > 0) {
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (hamburger && navMenu) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
         });
-    });
+    }
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!navbar.contains(e.target)) {
+        if (navbar && hamburger && navMenu && !navbar.contains(e.target)) {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }
@@ -135,16 +157,16 @@ function initScrollAnimations() {
         }, 16);
     }
     
-    // Parallax effect for hero background
-    window.addEventListener('scroll', () => {
+    // Enhanced parallax effect for hero background
+    window.addEventListener('scroll', debounce(() => {
         const scrolled = window.pageYOffset;
         const heroBackground = document.querySelector('.hero-background');
         
         if (heroBackground) {
-            const speed = scrolled * 0.5;
-            heroBackground.style.transform = `translateY(${speed}px)`;
+            const speed = scrolled * 0.3;
+            heroBackground.style.transform = `translateY(${speed}px) scale(${1 + scrolled * 0.0001})`;
         }
-    });
+    }, 16));
     
     // Fade in elements on scroll
     const fadeElements = document.querySelectorAll('.fade-on-scroll');
@@ -161,6 +183,106 @@ function initScrollAnimations() {
         fadeObserver.observe(element);
     });
 }
+
+// Modern Interactive Effects
+function initModernEffects() {
+    // Magnetic effect for buttons
+    const buttons = document.querySelectorAll('.btn');
+    
+    buttons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translate(0, 0)';
+        });
+    });
+    
+    // Cursor trail effect - REMOVED
+    
+    // Floating elements animation
+    animateFloatingElements();
+}
+
+// Card hover animations
+function initCardAnimations() {
+    const cards = document.querySelectorAll('.service-card, .feature-card, .work-item, .contact-item, .faq-item');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        // Add tilt effect
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `translateY(-8px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1) rotateX(0) rotateY(0)';
+        });
+    });
+}
+
+// Cursor trail effect - REMOVED
+
+// Floating elements animation
+function animateFloatingElements() {
+    const floatingElements = document.querySelectorAll('.service-icon, .feature-icon, .contact-icon');
+    
+    floatingElements.forEach((element, index) => {
+        const delay = index * 0.5;
+        const duration = 3 + Math.random() * 2;
+        
+        element.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+    });
+}
+
+// Add floating animation keyframes to CSS
+const floatingStyles = document.createElement('style');
+floatingStyles.textContent = `
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-10px) rotate(1deg); }
+        50% { transform: translateY(-5px) rotate(0deg); }
+        75% { transform: translateY(-15px) rotate(-1deg); }
+    }
+    
+    .cursor-trail {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    body:hover .cursor-trail {
+        opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+        .cursor-trail {
+            display: none;
+        }
+    }
+`;
+document.head.appendChild(floatingStyles);
 
 // Utility Functions
 function debounce(func, wait) {
